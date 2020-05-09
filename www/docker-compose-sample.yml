@@ -26,6 +26,11 @@ services:
       - ${PHP74_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
       - ${PHP74_LOG_DIR}:/var/log/php/:rw
     restart: always
+    depends_on:
+      - mysql
+      - postgres
+      - redis
+      - mongodb
     cap_add:
       - SYS_PTRACE
     networks:
@@ -41,6 +46,11 @@ services:
       - ${PHP56_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
       - ${PHP56_LOG_DIR}:/var/log/php/:rw
     restart: always
+    depends_on:
+      - mysql
+      - postgres
+      - redis
+      - mongodb
     cap_add:
       - SYS_PTRACE
     networks:
