@@ -1,6 +1,6 @@
 # VVDD (vagrant + virtualbox + docker + development)
 
-author：william QQ群：119796543
+author：william
 
 ## 一、准备
 ```
