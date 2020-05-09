@@ -32,9 +32,9 @@ Vagrant.configure(2) do |config|
 	  # config.vm.boot_timeout = 20
 	  # config.ssh.host = "127.0.0.1"
 	  # config.ssh.port = 22
-	  config.ssh.username = "root"
+	  # config.ssh.username = "root"
 	  # config.ssh.password = "vagrant"
-	  config.ssh.private_key_path = "./id_rsa"
+	  # config.ssh.private_key_path = "./id_rsa"
       config.vm.network :private_network, ip: opts[:eth1]
     end
   end
