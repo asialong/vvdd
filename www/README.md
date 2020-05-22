@@ -32,7 +32,7 @@
 
     ```
 5. （可选）如果提示需要依赖，用`--ignore-platform-reqs --no-scripts`关闭依赖检测。
-6. （可选）第一次使用 composer 会在 ~/vnmp/composer 目录下生成一个config.json文件，可以在这个文件中指定国内仓库，例如：
+6. （可选）第一次使用 composer 会在 ~/composer 目录下生成一个config.json文件，可以在这个文件中指定国内仓库，例如：
     ```
     {
         "config": {},
@@ -44,4 +44,14 @@
         }
     }
 
+    ```
+7. 如果navicat工具连不上mysql,进入mysql容器：
+	```
+	use mysql;
+	select user,host,plugin from user;
+	ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123456';
+	update user set host='%' where user='root';
+	GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+	select user,host,plugin from user;
+	flush privileges;
     ```

@@ -18,7 +18,8 @@ services:
 
 
   php74:
-    image: php:${PHP74_VERSION}-fpm
+    # image: php:${PHP74_VERSION}-fpm
+    build: ./conf/php7.4
     ports:
       - "${PHP74_PORT}:9000"
     volumes:
@@ -36,6 +37,66 @@ services:
     networks:
       - frontend
       - backend
+      
+  # php73:
+    # image: php:${PHP73_VERSION}-fpm
+    # ports:
+      # - "${PHP73_PORT}:9000"
+    # volumes:
+      # - ${SOURCE_DIR}:/var/www/html/:rw
+      # - ${PHP73_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      # - ${PHP73_LOG_DIR}:/var/log/php/:rw
+    # restart: always
+    # depends_on:
+      # - mysql
+      # - postgres
+      # - redis
+      # - mongodb
+    # cap_add:
+      # - SYS_PTRACE
+    # networks:
+      # - frontend
+      # - backend
+      
+  # php72:
+    # image: php:${PHP72_VERSION}-fpm
+    # ports:
+      # - "${PHP72_PORT}:9000"
+    # volumes:
+      # - ${SOURCE_DIR}:/var/www/html/:rw
+      # - ${PHP72_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      # - ${PHP72_LOG_DIR}:/var/log/php/:rw
+    # restart: always
+    # depends_on:
+      # - mysql
+      # - postgres
+      # - redis
+      # - mongodb
+    # cap_add:
+      # - SYS_PTRACE
+    # networks:
+      # - frontend
+      # - backend
+      
+  # php71:
+    # image: php:${PHP71_VERSION}-fpm
+    # ports:
+      # - "${PHP71_PORT}:9000"
+    # volumes:
+      # - ${SOURCE_DIR}:/var/www/html/:rw
+      # - ${PHP71_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
+      # - ${PHP71_LOG_DIR}:/var/log/php/:rw
+    # restart: always
+    # depends_on:
+      # - mysql
+      # - postgres
+      # - redis
+      # - mongodb
+    # cap_add:
+      # - SYS_PTRACE
+    # networks:
+      # - frontend
+      # - backend
 
   php56:
     image: php:${PHP56_VERSION}-fpm
@@ -60,12 +121,18 @@ services:
       
   mysql:
     image: mysql:${MYSQL_VERSION}
-    command: --default-authentication-plugin=mysql_native_password
-    hostname: ${MYSQL_HOSTNAME}
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --default-authentication-plugin=mysql_native_password
+      --max_allowed_packet=256M
+      --sql-mode="STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"
+    privileged: true
     ports:
       - "${MYSQL_HOST_PORT}:3306"
     volumes:
-      - ${MYSQL_CONF_FILE}:/etc/mysql/conf.d/mysql.cnf:ro
+      - ${MYSQL_CONF_FILE}:/etc/mysql/mysql.cnf
       - ${MYSQL_DATA_DIR}:/var/lib/mysql/:rw
     restart: always
     environment:
