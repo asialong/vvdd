@@ -29,6 +29,9 @@
 4. 在主机的任何目录下就能用composer了：
     ```
     cd /www
+    cp docker-compose-sample.yml docker-compose.yml
+    cp env.sample .env
+    docker-compose up -d
 
     ```
 5. （可选）如果提示需要依赖，用`--ignore-platform-reqs --no-scripts`关闭依赖检测。
@@ -45,6 +48,10 @@
     }
 
     ```
+	或者
+	```
+	composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+	```
 7. 如果navicat工具连不上mysql,进入mysql容器：
 	```
 	use mysql;
