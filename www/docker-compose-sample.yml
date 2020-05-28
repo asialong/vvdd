@@ -12,6 +12,7 @@ services:
       - ${NGINX_CONF_FILE}:/etc/nginx/nginx.conf:ro
       - ${NGINX_LOG_DIR}:/var/log/nginx/:rw
     restart: always
+    privileged: true
     networks:
       - frontend
       - backend
@@ -160,6 +161,7 @@ services:
     volumes:
       - ${REDIS_CONF_FILE}:/etc/redis.conf:ro
     restart: always
+    privileged: true
     entrypoint: ["redis-server", "/etc/redis.conf"]
     networks:
       - backend
