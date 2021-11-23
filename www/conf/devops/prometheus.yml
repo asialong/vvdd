@@ -1,0 +1,18 @@
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+rule_files:
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+    - targets: ['192.168.144.11:9090']
+  - job_name: 'hyperf'
+    static_configs:
+    - targets: ['192.168.144.11:8500']
+  - job_name: 'grafana'
+    static_configs:
+    - targets: ['192.168.144.11:3000']

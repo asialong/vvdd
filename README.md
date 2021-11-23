@@ -9,33 +9,10 @@ author：william
 3、git clone https://github.com/asialong/vvdd.git
 ```
 
-## 二、安装环境
+## 二、启动并进入
 ```
 1、vagrant up
-> 以下几点可选
-2、vagrant ssh
-    切换到root用户
-    cd ~
-    mkdir .ssh
-    cd .ssh
-    touch authorized_keys
-    ssh-keygen -t rsa
-    cat id_rsa.pub >> authorized_keys
-    复制id_rsa的内容
-```
-        修改/etc/ssh/sshd_config
-        PermitRootLogin yes
-        PasswordAuthentication yes
-        PubkeyAuthentication yes
-        systemctl restart sshd.service
-    退出虚拟机
-    在当前目录新建id_rsa，粘贴刚才的内容，保存
-```
-3、将Vagrantfile打开并将以下两行的#去掉，保存
-    #config.ssh.username = "root"
-    #config.ssh.private_key_path = "./id_rsa"
-4、vagrant reload
-5、vagrant ssh 输入密码：vagrant 后回车进入
+2、vagrant ssh 虚拟机名（多机时使用）
 ```
 ## 三、按需安装容器
 ### 使用composer
