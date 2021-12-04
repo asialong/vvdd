@@ -58,7 +58,7 @@ services:
       - backend
       
   microenv:
-    image: asialong/centos_microenv:1.6
+    image: asialong/centos_microenv:1.7
     volumes:
       - ${SOURCE_DIR}:/var/www/html/:rw
       - ${MICROENV_PHP_CONF_FILE}:/usr/local/php/etc/php.ini:ro
