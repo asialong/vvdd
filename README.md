@@ -6,7 +6,13 @@ author：william
 ```
 1、安装virtualbox ,官网https://www.virtualbox.org/
 2、安装vagrant ,官网https://www.vagrantup.com/
+    安装vagrant插件：
+    vagrant plugin install vagrant-vbguest
+    vagrant plugininstallvagrant-winnfsd（windows系统需要安装这个）
 3、git clone https://github.com/asialong/vvdd.git
+    cd www
+    cp docker-compose-sample.yml docker-compose.yml
+    cp env.sample .env
 ```
 
 ## 二、启动并进入

@@ -61,8 +61,8 @@ services:
     image: asialong/centos_microenv:1.6
     volumes:
       - ${SOURCE_DIR}:/var/www/html/:rw
-      - ${PHP74_PHP_CONF_FILE}:/usr/local/php/etc/php.ini:ro
-      - ${PHP74_LOG_DIR}:/var/log/php/:rw
+      - ${MICROENV_PHP_CONF_FILE}:/usr/local/php/etc/php.ini:ro
+      - ${MICROENV_PHP_LOG_DIR}:/var/log/php/:rw
     restart: always
     stdin_open: true
     tty: true
